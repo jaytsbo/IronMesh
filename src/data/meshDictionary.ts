@@ -37,7 +37,7 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
   {
     key: 'hamstrings',
     regex: /biceps\s*femoris|semitendinosus|semimembranosus/i,
-    label: '腿後肌群 (Hamstrings)',
+    label: '腿後肌群 / 膕繩肌 (Hamstrings)',
   },
   {
     key: 'calves',
@@ -253,24 +253,14 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
     label: '臀部肌群 (Glutes)',
   },
   {
-    key: 'quads_rectus_femoris',
-    regex: /rectus\s*femoris/i,
-    label: '股直肌 (Rectus Femoris)',
-  },
-  {
-    key: 'quads_vastus_lateralis',
-    regex: /vastus\s*lateralis/i,
-    label: '股外側肌 (Vastus Lateralis)',
-  },
-  {
-    key: 'quads_vastus_medialis',
-    regex: /vastus\s*medialis/i,
-    label: '股內側肌 (Vastus Medialis)',
+    key: 'adductors',
+    regex: /adductor\s*(longus|brevis|magnus|minimus)|gracilis|pectineus/i,
+    label: '內收肌群 (Adductor Group)',
   },
   {
     key: 'quads',
-    regex: /vastus\s*intermedius|quadriceps|sartorius|adductor\s*(longus|brevis|magnus|minimus)|gracilis|pectineus/i,
-    label: '股四頭肌與內收肌群 (Quads & Adductors)',
+    regex: /rectus\s*femoris|vastus\s*(lateralis|medialis|intermedius)|quadriceps|sartorius/i,
+    label: '股四頭肌群 (Quadriceps)',
   },
 ];
 
@@ -301,7 +291,8 @@ export const MUSCLE_PARENT_MAP: Record<string, MuscleGroupKey[]> = {
     'transversus_abdominis',
     'serratus_anterior',
   ],
-  quads: ['quads', 'quads_rectus_femoris', 'quads_vastus_lateralis', 'quads_vastus_medialis'],
+  quads: ['quads'],
+  adductors: ['adductors'],
   glutes: ['glutes', 'glutes_maximus', 'glutes_medius'],
   hamstrings: ['hamstrings'],
   calves: ['calves'],

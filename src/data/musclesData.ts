@@ -377,12 +377,12 @@ export const MUSCLES_DATA: Record<MuscleGroupKey, MuscleGroupInfo> = {
 
   quads: {
     key: 'quads',
-    name: '股四頭肌',
+    name: '股四頭肌群',
     nameEn: 'Quadriceps',
     latinName: 'Musculus Quadriceps Femoris',
     split: 'legs',
-    functionSummary: '人體最大最有力的肌群之一，主要負責伸展膝關節，股直肌兼具屈髖功能。是站立、奔跑、深蹲的核心發力源。',
-    originInsertion: '股直肌起於髂前下棘；股內側/外側/中間肌起於股骨體。共同匯聚於髕骨並藉髕韌帶止於脛骨粗隆。',
+    functionSummary: '人體最大最有力的肌群之一，由股直肌、股外側肌、股內側肌與股中間肌組成。主要負責伸展膝關節，股直肌兼具屈髖功能。是站立、奔跑、深蹲跳躍的核心推力來源。',
+    originInsertion: '股直肌起於髂前下棘；股內側/外側/中間肌起於股骨粗線與骨幹。共同匯聚於髕骨並藉髕韌帶止於脛骨粗隆。',
     cameraFocus: {
       target: [0, 0.55, 0],
       position: [0, 0.6, 1.45],
@@ -396,7 +396,7 @@ export const MUSCLES_DATA: Record<MuscleGroupKey, MuscleGroupInfo> = {
         type: '複合動作 (Compound)',
         equipment: '槓鈴 Barbell',
         difficulty: '進階 Advanced',
-        description: '下肢重訓皇冠動作，全面刺激股四頭肌、臀大肌、內收肌群與全身軀幹剛性。',
+        description: '下肢重訓皇冠動作，全面刺激股四頭肌、臀大肌與全身軀幹剛性。',
         cues: [
           '槓鈴平穩架在斜方肌上，雙腳與肩同寬，腳尖自然外展 15~30 度',
           '核心腹壓充滿 360 度環狀支撐，同時下沉髖部與屈膝',
@@ -430,9 +430,80 @@ export const MUSCLES_DATA: Record<MuscleGroupKey, MuscleGroupInfo> = {
     ],
   },
 
+  adductors: {
+    key: 'adductors',
+    name: '內收肌群',
+    nameEn: 'Adductor Group',
+    latinName: 'Musculi Adductores Femoris',
+    split: 'legs',
+    functionSummary: '位於大腿內側，包含大收肌、長收肌、短收肌、恥骨肌與股薄肌。主要負責髖關節內收（雙腿夾緊）、協助髖屈伸與骨盆旋轉穩定，在深蹲底端扮演至關重要的起身發力與動態平衡樞紐。',
+    originInsertion: '起點：恥骨下支、恥骨體、坐骨支及坐骨結節；止點：股骨粗線內側唇、內上髁及脛骨上端內側（鵝足腱）。',
+    cameraFocus: {
+      target: [0, 0.58, 0],
+      position: [0.2, 0.62, 1.3],
+    },
+    themeColor: '#d946ef',
+    exercises: [
+      {
+        id: 'ex-seated-adductor-machine',
+        name: '坐姿大腿夾腿機',
+        nameEn: 'Seated Hip Adduction Machine',
+        type: '孤立動作 (Isolation)',
+        equipment: '器械 Machine',
+        difficulty: '入門 Beginner',
+        description: '精準孤立大腿內收肌群的器械動作，提供全程平順且均勻的阻力，強化大腿內側緊實度與膝關節穩定。',
+        cues: [
+          '背部貼實靠墊，雙腿放於擋板內側，調整初始角度至舒適伸展位',
+          '呼氣時由大腿內側發力向內夾緊合攏，頂峰時稍作停頓 1~2 秒',
+          '吸氣時保持離心對抗，緩慢放開至起始位置，切忌快速撞擊配重片',
+        ],
+        precautions: [
+          '避免利用膝蓋骨頭硬頂或雙手借力，專注大腿根部收縮',
+        ],
+        tags: ['內側緊緻', '骨盆穩定', '孤立強化'],
+      },
+      {
+        id: 'ex-sumo-squat',
+        name: '相撲深蹲',
+        nameEn: 'Sumo Squat',
+        type: '複合動作 (Compound)',
+        equipment: '槓鈴 Barbell',
+        difficulty: '中階 Intermediate',
+        description: '寬站距外展深蹲動作，大幅提升大收肌與內收肌群在深蹲底端的機械張力與爆發推進力。',
+        cues: [
+          '雙腳站距為肩寬 1.5~2 倍，腳尖外展約 30~45 度',
+          '下蹲時膝蓋始終沿腳尖方向主動向外展開，感受大腿內側強烈拉伸',
+          '腳後跟用力蹬地，起身時用意念由內收肌向中線夾緊收攏骨盆',
+        ],
+        precautions: [
+          '嚴禁膝蓋內扣坍塌，若外展活動度受限可適度微調站距',
+        ],
+        tags: ['大收肌增厚', '深蹲底端推進', '功能性髖穩定'],
+      },
+      {
+        id: 'ex-copenhagen-plank',
+        name: '哥本哈根側棒式',
+        nameEn: 'Copenhagen Plank',
+        type: '孤立動作 (Isolation)',
+        equipment: '自重 Bodyweight',
+        difficulty: '進階 Advanced',
+        description: '運動防護與體能訓練公認強化大腿內收肌等長肌力、預防腹股溝拉傷的最強功能性動作。',
+        cues: [
+          '採側橋支撐姿勢，上方腳內側搭於長凳表面，下方腿懸空收於凳下',
+          '收緊腹核心，利用大腿內收肌力量將骨盆挺起，使身體呈一直線',
+          '保持均勻呼吸，專注維持骨盆中立不旋轉下墜，維持 15~30 秒',
+        ],
+        precautions: [
+          '若膝蓋內側承受過大剪切力，可將支撐點改至上方大腿膝關節縮短力臂',
+        ],
+        tags: ['腹股溝防護', '等長核心剛性', '運動員首選'],
+      },
+    ],
+  },
+
   hamstrings: {
     key: 'hamstrings',
-    name: '腿後肌群 (膕繩肌)',
+    name: '腿後肌群 / 膕繩肌',
     nameEn: 'Hamstrings',
     latinName: 'Musculi Ischiocrurales',
     split: 'legs',
@@ -1118,54 +1189,6 @@ export const MUSCLES_DATA: Record<MuscleGroupKey, MuscleGroupInfo> = {
   // ==========================================
   // 下肢細分
   // ==========================================
-  quads_rectus_femoris: {
-    key: 'quads_rectus_femoris',
-    name: '股直肌',
-    nameEn: 'Rectus Femoris',
-    latinName: 'Musculus Rectus Femoris',
-    split: 'legs',
-    functionSummary: '大腿前側正中央的雙關節肌，同時主管屈髖與伸膝，深蹲與腿屈伸皆強烈徵召。',
-    originInsertion: '起於髂前下棘；止於脛骨粗隆。',
-    cameraFocus: {
-      target: [0, 0.6, 0],
-      position: [0, 0.65, 1.35],
-    },
-    themeColor: '#14b8a6',
-    exercises: [],
-  },
-
-  quads_vastus_lateralis: {
-    key: 'quads_vastus_lateralis',
-    name: '股外側肌 (大腿外翻)',
-    nameEn: 'Vastus Lateralis',
-    latinName: 'Musculus Vastus Lateralis',
-    split: 'legs',
-    functionSummary: '大腿最大的單塊肌肉，決定大腿外側輪廓的弧度外翻感 (Quad Sweep)。',
-    originInsertion: '起於股骨粗線外側唇；止於脛骨粗隆。',
-    cameraFocus: {
-      target: [0.25, 0.55, 0],
-      position: [0.65, 0.6, 1.25],
-    },
-    themeColor: '#0d9488',
-    exercises: [],
-  },
-
-  quads_vastus_medialis: {
-    key: 'quads_vastus_medialis',
-    name: '股內側肌 (水滴肌)',
-    nameEn: 'Vastus Medialis',
-    latinName: 'Musculus Vastus Medialis (VMO)',
-    split: 'legs',
-    functionSummary: '膝蓋內上方的水滴形肌肉，主管伸膝最後 15 度鎖定與髕骨軌跡穩定，保護髕股關節。',
-    originInsertion: '起於股骨粗線內側唇；止於脛骨粗隆。',
-    cameraFocus: {
-      target: [0.1, 0.45, 0],
-      position: [0.35, 0.5, 1.2],
-    },
-    themeColor: '#2dd4bf',
-    exercises: [],
-  },
-
   glutes_maximus: {
     key: 'glutes_maximus',
     name: '臀大肌',

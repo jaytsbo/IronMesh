@@ -15,7 +15,7 @@ const SPLIT_OPTIONS: { key: WorkoutSplit; label: string; count: string }[] = [
   { key: 'all', label: '全部部位', count: 'ALL' },
   { key: 'push', label: '推類 (Push)', count: '胸/肩/三頭' },
   { key: 'pull', label: '拉類 (Pull)', count: '背/二頭' },
-  { key: 'legs', label: '下肢 (Legs)', count: '四頭/腿後/臀/小腿' },
+  { key: 'legs', label: '下肢 (Legs)', count: '四頭/腿後/內收/臀/小腿' },
   { key: 'core', label: '核心 (Core)', count: '上腹/下腹/腹斜肌/前鋸肌' },
 ];
 

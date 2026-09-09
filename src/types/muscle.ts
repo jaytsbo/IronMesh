@@ -39,10 +39,8 @@ export type MuscleGroupKey =
   | 'forearm_pronators_supinators'
   | 'forearms'
   // 下肢細分
-  | 'quads_rectus_femoris'
-  | 'quads_vastus_lateralis'
-  | 'quads_vastus_medialis'
   | 'quads'
+  | 'adductors'
   | 'hamstrings'
   | 'glutes_maximus'
   | 'glutes_medius'
