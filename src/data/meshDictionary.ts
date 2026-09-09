@@ -41,7 +41,7 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
   },
   {
     key: 'calves',
-    regex: /gastrocnemius|soleus|triceps\s*surae|tibialis\s*anterior|tibialis\s*posterior|plantaris/i,
+    regex: /gastrocnemius|soleus|triceps\s*surae|tibialis\s*anterior|tibialis\s*posterior|plantaris|fibularis|peroneus|extensor\s*digitorum\s*longus|flexor\s*digitorum\s*longus|extensor\s*hallucis|flexor\s*hallucis/i,
     label: '小腿肌群 (Calves)',
   },
 
@@ -162,7 +162,7 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
   },
 
   // -------------------------
-  // 6. 手臂肌群細分 (二頭 / 三頭 / 肱肌與前臂)
+  // 6. 手臂肌群細分 (二頭 / 三頭 / 肱肌 / 前臂肌群)
   // -------------------------
   {
     key: 'biceps_long_head',
@@ -176,13 +176,42 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
   },
   {
     key: 'brachialis',
-    regex: /\bbrachialis|\bbrachioradialis|coracobrachialis|pronator/i,
-    label: '肱肌與前臂肌群 (Brachialis)',
+    regex: /\bbrachialis\b|coracobrachialis/i,
+    label: '肱肌 (Brachialis)',
   },
   {
     key: 'biceps',
     regex: /biceps\s*brachii/i,
     label: '肱二頭肌 (Biceps)',
+  },
+
+  // -------------------------
+  // 6.1 前臂四分化肌群
+  // -------------------------
+  {
+    key: 'brachioradialis',
+    regex: /brachioradialis/i,
+    label: '肱橈肌 (Brachioradialis)',
+  },
+  {
+    key: 'forearm_pronators_supinators',
+    regex: /pronator|supinator/i,
+    label: '旋前與旋後肌群 (Pronators & Supinators)',
+  },
+  {
+    key: 'forearm_flexors',
+    regex: /flexor\s*carpi|flexor\s*digitorum|flexor\s*pollicis|palmaris\s*longus|palmaris/i,
+    label: '前臂屈肌群 (Forearm Flexors)',
+  },
+  {
+    key: 'forearm_extensors',
+    regex: /extensor\s*carpi|extensor\s*digitorum|extensor\s*pollicis|extensor\s*indicis|extensor\s*digiti|abductor\s*pollicis\s*longus/i,
+    label: '前臂伸肌群 (Forearm Extensors)',
+  },
+  {
+    key: 'forearms',
+    regex: /antebrachial|forearm|lumbrical|interossei|abductor\s*digiti\s*minimi\s*of\s*hand|abductor\s*pollicis\s*brevis/i,
+    label: '前臂肌群整體 (Forearms)',
   },
   {
     key: 'triceps_long_head',
@@ -255,6 +284,13 @@ export const MUSCLE_PARENT_MAP: Record<string, MuscleGroupKey[]> = {
   shoulders: ['shoulders', 'deltoid_anterior', 'deltoid_lateral', 'deltoid_posterior'],
   biceps: ['biceps', 'biceps_long_head', 'biceps_short_head', 'brachialis'],
   triceps: ['triceps', 'triceps_long_head', 'triceps_lateral_head', 'triceps_medial_head'],
+  forearms: [
+    'forearms',
+    'brachioradialis',
+    'forearm_flexors',
+    'forearm_extensors',
+    'forearm_pronators_supinators',
+  ],
   abs: [
     'abs',
     'rectus_abdominis',

@@ -32,6 +32,12 @@ export type MuscleGroupKey =
   | 'triceps_lateral_head'
   | 'triceps_medial_head'
   | 'triceps'
+  // 前臂細分
+  | 'brachioradialis'
+  | 'forearm_flexors'
+  | 'forearm_extensors'
+  | 'forearm_pronators_supinators'
+  | 'forearms'
   // 下肢細分
   | 'quads_rectus_femoris'
   | 'quads_vastus_lateralis'

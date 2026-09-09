@@ -1197,5 +1197,256 @@ export const MUSCLES_DATA: Record<MuscleGroupKey, MuscleGroupInfo> = {
     themeColor: '#fb7185',
     exercises: [],
   },
+
+  // ==========================================
+  // 手臂細分 - 前臂肌群 (四分化)
+  // ==========================================
+  brachioradialis: {
+    key: 'brachioradialis',
+    name: '肱橈肌',
+    nameEn: 'Brachioradialis',
+    latinName: 'Musculus Brachioradialis',
+    split: 'pull',
+    functionSummary: '位於前臂外側（橈側）的最粗壯肌肉。主導中立握（錘式）與反手時的肘關節屈曲，在前臂快速屈伸與大重量拉力時發揮關鍵原動力。',
+    originInsertion: '起於肱骨外上髁上方外側脊；止於橈骨莖突底部外側。',
+    cameraFocus: {
+      target: [0.38, 1.05, 0.05],
+      position: [0.72, 1.12, 0.6],
+    },
+    themeColor: '#0ea5e9',
+    exercises: [
+      {
+        id: 'ex-db-hammer-curl',
+        name: '啞鈴錘式彎舉',
+        nameEn: 'Dumbbell Hammer Curl',
+        type: '孤立動作 (Isolation)',
+        equipment: '啞鈴 Dumbbell',
+        difficulty: '入門 Beginner',
+        description: '雙手保持掌心相對的中立握法，將張力完全聚焦於肱橈肌與肱肌，打造前臂外側厚度。',
+        cues: [
+          '掌心相對握緊啞鈴，手肘貼緊軀幹兩側鎖定',
+          '專注用前臂外側發力帶起啞鈴至胸前，頂峰收縮 1 秒',
+          '下放時維持 2~3 秒慢速離心控制，手臂切勿完全卸力',
+        ],
+        precautions: [
+          '避免身體前後擺盪藉力甩動重量，保持軀幹垂直穩定',
+        ],
+        tags: ['前臂外側厚度', '中立握力', '肱肌連動'],
+      },
+      {
+        id: 'ex-reverse-barbell-curl',
+        name: '反向槓鈴彎舉',
+        nameEn: 'Reverse Barbell Curl',
+        type: '孤立動作 (Isolation)',
+        equipment: '槓鈴 Barbell',
+        difficulty: '中階 Intermediate',
+        description: '正手反握槓鈴進行彎舉，高度孤立肱橈肌並強化前臂伸肌群的靜態支撐力。',
+        cues: [
+          '雙手正握槓鈴與肩同寬，手腕保持中立挺直',
+          '肘部為軸心向上屈臂，頂點擠壓前臂外側肌腹',
+          '下放全程控制槓鈴軌跡，對抗重量下墜',
+        ],
+        precautions: [
+          '手腕若感到壓迫，可改用曲柄槓 (EZ-Bar) 提供更符合人體工學的握持角度',
+        ],
+        tags: ['肱橈肌強化', '前臂維度', '拉力鏈條'],
+      },
+    ],
+  },
+
+  forearm_flexors: {
+    key: 'forearm_flexors',
+    name: '前臂屈肌群',
+    nameEn: 'Forearm Flexors (Wrist & Finger Flexors)',
+    latinName: 'Musculi Flexores Antebrachii',
+    split: 'pull',
+    functionSummary: '位於前臂前側/內側淺深層，包含橈側/尺側屈腕肌、指淺/深屈肌與掌長肌。負責腕關節掌屈、手指握緊與高強度捏握發力。',
+    originInsertion: '共同起點於肱骨內上髁（屈肌總腱）及尺橈骨骨幹；止於掌骨底、中節與遠節指骨。',
+    cameraFocus: {
+      target: [0.32, 0.95, 0.08],
+      position: [0.6, 1.0, 0.75],
+    },
+    themeColor: '#06b6d4',
+    exercises: [
+      {
+        id: 'ex-db-wrist-curl',
+        name: '坐姿啞鈴腕彎舉',
+        nameEn: 'Seated Dumbbell Wrist Curl',
+        type: '孤立動作 (Isolation)',
+        equipment: '啞鈴 Dumbbell',
+        difficulty: '入門 Beginner',
+        description: '前臂平放支撐，純粹進行腕關節掌屈動作，極限泵感累積前臂內側肌腹厚度。',
+        cues: [
+          '前臂平貼於大腿或板凳，手腕懸空於膝前',
+          '反手握啞鈴，下放至指尖微微展開拉伸屈肌',
+          '手腕用力向上捲起至最高點，頂峰擠壓 1 秒',
+        ],
+        precautions: [
+          '手腕為精細關節，切忌使用爆發力或盲目加大重量，應以 12~20 次的高容量為主',
+        ],
+        tags: ['前臂內側', '掌屈肌泵感', '握力基石'],
+      },
+      {
+        id: 'ex-behind-back-wrist-curl',
+        name: '站姿槓鈴背後腕彎舉',
+        nameEn: 'Behind-the-Back Barbell Wrist Curl',
+        type: '孤立動作 (Isolation)',
+        equipment: '槓鈴 Barbell',
+        difficulty: '中階 Intermediate',
+        description: '槓鈴置於身後進行腕彎舉，能在前臂屈肌完全縮短位置提供極致峰值收縮。',
+        cues: [
+          '雙手身後正握槓鈴，雙臂自然下垂',
+          '純靠手指與手腕向上捲動槓鈴，頂點用力緊繃前臂屈肌',
+          '緩慢放回起點，維持張力不中斷',
+        ],
+        precautions: [
+          '動作過程肩胛保持微收，避免聳肩代償',
+        ],
+        tags: ['峰值擠壓', '前臂全維度', '腕部強化'],
+      },
+    ],
+  },
+
+  forearm_extensors: {
+    key: 'forearm_extensors',
+    name: '前臂伸肌群',
+    nameEn: 'Forearm Extensors (Wrist & Finger Extensors)',
+    latinName: 'Musculi Extensores Antebrachii',
+    split: 'pull',
+    functionSummary: '位於前臂後側/背側，包含橈側/尺側伸腕肌、指伸肌、示指/小指伸肌與拇長展肌。主導手腕背伸、張指及動態對抗屈肌拉力，防止網球肘與腕部失衡。',
+    originInsertion: '共同起點於肱骨外上髁（伸肌總腱）及骨間膜；止於第 2~5 掌骨底及指背腱膜。',
+    cameraFocus: {
+      target: [0.35, 0.98, -0.05],
+      position: [0.65, 1.05, -0.65],
+    },
+    themeColor: '#38bdf8',
+    exercises: [
+      {
+        id: 'ex-reverse-wrist-curl',
+        name: '反手坐姿腕伸展 (反向腕彎舉)',
+        nameEn: 'Reverse Wrist Curl',
+        type: '孤立動作 (Isolation)',
+        equipment: '啞鈴 Dumbbell',
+        difficulty: '入門 Beginner',
+        description: '掌心向下進行手腕背伸動作，專注刺激前臂後側伸肌群，平衡前臂前後肌力。',
+        cues: [
+          '前臂平貼支撐，手腕懸空，掌心朝下握啞鈴',
+          '由手腕發力將啞鈴向上背伸抬起，頂點停留擠壓伸肌',
+          '下放時抵抗重力緩慢回到中立位',
+        ],
+        precautions: [
+          '伸肌群力量通常小於屈肌群，請使用較輕重量維持完整活動度',
+        ],
+        tags: ['前臂後側', '腕伸肌群', '關節平衡'],
+      },
+      {
+        id: 'ex-finger-band-extension',
+        name: '手指導引彈力帶開展',
+        nameEn: 'Finger Band Extension',
+        type: '孤立動作 (Isolation)',
+        equipment: '器械 Machine',
+        difficulty: '入門 Beginner',
+        description: '套上彈力圈進行手指對抗阻力的五指張開訓練，強化指伸肌與深層手部小肌群。',
+        cues: [
+          '五指聚攏套入彈力帶，指節保持微屈',
+          '用力將五指向外撐開至最大極限，感受前臂後外側肌群緊繃',
+          '慢速收回指尖，保持持續離心張力',
+        ],
+        precautions: [
+          '避免指關節過度過伸鎖死，動作保持平順無衝擊',
+        ],
+        tags: ['拮抗訓練', '防網球肘', '指伸耐力'],
+      },
+    ],
+  },
+
+  forearm_pronators_supinators: {
+    key: 'forearm_pronators_supinators',
+    name: '旋前與旋後肌群',
+    nameEn: 'Pronators & Supinators',
+    latinName: 'Musculi Pronatores et Supinatores',
+    split: 'pull',
+    functionSummary: '包含旋前圓肌、旋前方肌與旋後肌。主導前臂在掌心朝下（旋前）與掌心朝上（旋後）之間的旋轉扭矩發力，是投擲、格鬥與腕力競技的核心肌群。',
+    originInsertion: '起於肱骨內/外上髁、尺骨橈切跡脊；止於橈骨外側面中段及遠端掌面。',
+    cameraFocus: {
+      target: [0.35, 1.05, 0],
+      position: [0.65, 1.15, 0.55],
+    },
+    themeColor: '#22d3ee',
+    exercises: [
+      {
+        id: 'ex-db-pronation-supination',
+        name: '單側啞鈴前臂旋轉 (旋前/旋後)',
+        nameEn: 'Dumbbell Forearm Pronation & Supination',
+        type: '孤立動作 (Isolation)',
+        equipment: '啞鈴 Dumbbell',
+        difficulty: '入門 Beginner',
+        description: '單手握持單邊負重啞鈴，以前臂中軸為核心進行 180 度內外旋轉，精準強化旋前與旋後肌。',
+        cues: [
+          '手握單頭負重啞鈴的一端，前臂平置於大腿上支撐',
+          '以手肘與前臂為軸心，慢速由掌心朝上向內旋轉至掌心朝下',
+          '再由掌心朝下平穩旋後翻回掌心朝上，兩側端點各停頓 1 秒',
+        ],
+        precautions: [
+          '手肘全程保持穩定貼合支撐面，避免以肩部內外旋代償前臂旋轉',
+        ],
+        tags: ['旋轉扭矩', '腕力強化', '關節防護'],
+      },
+      {
+        id: 'ex-lever-rotation',
+        name: '大錘 / 鐵棒力臂旋轉',
+        nameEn: 'Sledgehammer Lever Rotations',
+        type: '複合動作 (Compound)',
+        equipment: '自重 Bodyweight',
+        difficulty: '中階 Intermediate',
+        description: '利用長力臂槓桿效應，對前臂旋前肌與旋後肌施加漸進式動態扭矩阻力。',
+        cues: [
+          '手握長棍或大錘握柄底端，手臂呈 90 度屈曲',
+          '緩慢控制長柄向內倒下後以旋前肌收縮拉回中立',
+          '再向外側倒下以旋後肌拉回，全程強調離心控制',
+        ],
+        precautions: [
+          '依自身能力調整手握位置，握得越靠近重物端力臂越短、難度越低',
+        ],
+        tags: ['功能性力量', '格鬥腕力', '深層控制'],
+      },
+    ],
+  },
+
+  forearms: {
+    key: 'forearms',
+    name: '前臂肌群整體',
+    nameEn: 'Forearms (Overall)',
+    latinName: 'Musculi Antebrachii',
+    split: 'pull',
+    functionSummary: '包含肱橈肌、前臂屈肌群、前臂伸肌群與旋前旋後肌群。主導手腕屈伸、強大握力 (Grip Strength) 與前臂旋轉，是所有拉類與握持動作的核心傳遞樞紐。',
+    originInsertion: '起於肱骨內/外上髁、尺骨橈骨骨幹；止於掌骨、指骨及橈骨莖突。',
+    cameraFocus: {
+      target: [0.35, 0.98, 0],
+      position: [0.65, 1.05, 0.65],
+    },
+    themeColor: '#06b6d4',
+    exercises: [
+      {
+        id: 'ex-farmers-walk',
+        name: '重裝農夫走路',
+        nameEn: 'Heavy Farmer\'s Walk',
+        type: '複合動作 (Compound)',
+        equipment: '啞鈴 Dumbbell',
+        difficulty: '進階 Advanced',
+        description: '全身性功能訓練之王，以等長收縮模式極限考驗手指抓握耐力、前臂全肌群與斜方肌靜態支撐。',
+        cues: [
+          '雙手緊握沉重啞鈴或六角槓，肩胛骨下沉後收並挺胸鎖定',
+          '核心收緊保持脊柱中立，以平穩均勻步伐向前行走',
+          '行走過程避免手臂隨意擺動，全力用意念抓緊握柄',
+        ],
+        precautions: [
+          '避免身體左右晃動或彎腰駝背，若握力耗盡應平穩蹲下放槓而非直接扔下',
+        ],
+        tags: ['終極握力', '全身核心', '前臂等長耐力'],
+      },
+    ],
+  },
 };
+
 
