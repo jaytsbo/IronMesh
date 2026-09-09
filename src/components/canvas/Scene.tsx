@@ -38,23 +38,23 @@ export const Scene: React.FC = () => {
           shadow-bias={-0.0001}
         />
 
-        {/* 側後方冷調輪廓光 (Rim Light) - 突顯肌肉線條邊緣 */}
+        {/* 側後方輪廓光 (Rim Light) - 使用中性白光，避免藍光造成肌肉偏色 */}
         <directionalLight
           position={[-3, 2, -3]}
-          intensity={1.5}
-          color="#38bdf8"
+          intensity={0.7}
+          color="#ffffff"
         />
 
         {/* 補光 (Fill Light) */}
         <directionalLight
           position={[0, -2, 2]}
           intensity={0.4}
-          color="#64748b"
+          color="#e2e8f0"
         />
 
-        {/* 頂部半球光 */}
+        {/* 頂部半球光：中性均勻天光 */}
         <hemisphereLight
-          args={['#0284c7', '#0f172a', 0.5]}
+          args={['#f8fafc', '#1e293b', 0.45]}
         />
 
         {/* 控制相機平滑平移與聚焦 */}
