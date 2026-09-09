@@ -6,7 +6,7 @@ import { MuscleGroupKey, MeshMatchRule } from '../types/muscle';
  */
 export function isFasciaNode(nodeName: string): boolean {
   if (!nodeName) return false;
-  return /fascia/i.test(nodeName);
+  return /fascia|aponeurosis/i.test(nodeName);
 }
 
 /**
@@ -36,12 +36,12 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
   // -------------------------
   {
     key: 'hamstrings',
-    regex: /biceps\s*femoris|semitendinosus|semimembranosus|hamstring/i,
+    regex: /biceps\s*femoris|semitendinosus|semimembranosus/i,
     label: '腿後肌群 (Hamstrings)',
   },
   {
     key: 'calves',
-    regex: /gastrocnemius|soleus|triceps\s*surae|tibialis|plantaris|calf|calves/i,
+    regex: /gastrocnemius|soleus|triceps\s*surae|tibialis\s*anterior|tibialis\s*posterior|plantaris/i,
     label: '小腿肌群 (Calves)',
   },
 
@@ -65,13 +65,47 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
   },
   {
     key: 'shoulders',
-    regex: /deltoid|deltoideus|shoulder/i,
+    regex: /\bdeltoid/i,
     label: '三角肌複合 (Shoulders)',
   },
 
   // -------------------------
-  // 3. 核心細分 (腹直肌 / 腹外斜肌 / 腹內斜肌 / 腹橫肌)
+  // 3. 胸部肌群細分 (優先於腹部，避免 abdominal part of pectoral 被核心截胡)
   // -------------------------
+  {
+    key: 'chest_clavicular',
+    regex: /clavicular.*(head|part).*pectoral/i,
+    label: '胸大肌上束/鎖骨端 (Upper Chest)',
+  },
+  {
+    key: 'chest_minor',
+    regex: /pectoralis\s*minor/i,
+    label: '胸小肌 (Pectoralis Minor)',
+  },
+  {
+    key: 'chest_sternocostal',
+    regex: /sternocostal.*pectoral|abdominal.*part.*pectoral/i,
+    label: '胸大肌胸肋與下緣 (Mid & Lower Chest)',
+  },
+  {
+    key: 'chest',
+    regex: /pectoralis\s*major|\bpectoral\b/i,
+    label: '胸大肌整體 (Chest)',
+  },
+
+  // -------------------------
+  // 4. 核心細分 (上腹 / 下腹 / 腹外斜肌人魚線 / 腹內斜肌 / 腹橫肌 / 前鋸肌鯊魚線)
+  // -------------------------
+  {
+    key: 'rectus_abdominis_upper',
+    regex: /rectus\s*abdominis.*upper/i,
+    label: '上腹直肌 (Upper Rectus Abdominis)',
+  },
+  {
+    key: 'rectus_abdominis_lower',
+    regex: /rectus\s*abdominis.*lower|pyramidalis/i,
+    label: '下腹直肌 (Lower Rectus Abdominis)',
+  },
   {
     key: 'rectus_abdominis',
     regex: /rectus\s*abdominis/i,
@@ -79,12 +113,12 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
   },
   {
     key: 'external_oblique',
-    regex: /external\s*abdominal\s*oblique/i,
+    regex: /external\s*(abdominal\s*)?oblique/i,
     label: '腹外斜肌 (External Oblique)',
   },
   {
     key: 'internal_oblique',
-    regex: /internal\s*abdominal\s*oblique/i,
+    regex: /internal\s*(abdominal\s*)?oblique/i,
     label: '腹內斜肌 (Internal Oblique)',
   },
   {
@@ -93,33 +127,14 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
     label: '腹橫肌與深層核心 (Transversus Abdominis)',
   },
   {
+    key: 'serratus_anterior',
+    regex: /serratus\s*anterior/i,
+    label: '前鋸肌/鯊魚線 (Serratus Anterior)',
+  },
+  {
     key: 'abs',
-    regex: /pyramidalis|linea\s*alba|abdominis|abdom|core/i,
+    regex: /\b(linea\s*alba|abdominal\s*wall)\b/i,
     label: '核心肌群 (Core & Abs)',
-  },
-
-  // -------------------------
-  // 4. 胸部肌群細分 (上胸 / 中下胸 / 胸小肌)
-  // -------------------------
-  {
-    key: 'chest_clavicular',
-    regex: /clavicular.*head.*pectoral|clavicular.*pectoral/i,
-    label: '胸大肌上束/鎖骨端 (Upper Chest)',
-  },
-  {
-    key: 'chest_sternocostal',
-    regex: /sternocostal.*pectoral|abdominal.*pectoral/i,
-    label: '胸大肌胸肋與下緣 (Mid & Lower Chest)',
-  },
-  {
-    key: 'chest_minor',
-    regex: /pectoralis\s*minor/i,
-    label: '胸小肌 (Pectoralis Minor)',
-  },
-  {
-    key: 'chest',
-    regex: /pectoralis|pectoral|chest/i,
-    label: '胸大肌整體 (Chest)',
   },
 
   // -------------------------
@@ -137,17 +152,17 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
   },
   {
     key: 'lats',
-    regex: /latissimus\s*dorsi|latissimus/i,
+    regex: /latissimus\s*dorsi/i,
     label: '背闊肌 (Latissimus Dorsi)',
   },
   {
     key: 'back',
-    regex: /trapezius|infraspinatus|teres\s*major|teres\s*minor|erector\s*spinae|thoracolumbar|lats|back/i,
-    label: '背部肌群 (Back)',
+    regex: /infraspinatus|teres\s*major|teres\s*minor|longissimus|iliocostalis|semispinalis|spinalis|erector\s*spinae|thoracolumbar/i,
+    label: '背部與豎脊肌群 (Back & Spine)',
   },
 
   // -------------------------
-  // 6. 手臂肌群細分 (二頭 / 三頭)
+  // 6. 手臂肌群細分 (二頭 / 三頭 / 肱肌與前臂)
   // -------------------------
   {
     key: 'biceps_long_head',
@@ -161,32 +176,32 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
   },
   {
     key: 'brachialis',
-    regex: /brachialis|brachioradialis|coracobrachialis/i,
+    regex: /\bbrachialis|\bbrachioradialis|coracobrachialis|pronator/i,
     label: '肱肌與前臂肌群 (Brachialis)',
   },
   {
     key: 'biceps',
-    regex: /biceps\s*brachii|bicep/i,
+    regex: /biceps\s*brachii/i,
     label: '肱二頭肌 (Biceps)',
   },
   {
     key: 'triceps_long_head',
-    regex: /long\s*head.*triceps/i,
+    regex: /long\s*head.*triceps\s*brachii/i,
     label: '肱三頭肌長頭 (Triceps Long Head)',
   },
   {
     key: 'triceps_lateral_head',
-    regex: /lateral\s*head.*triceps/i,
+    regex: /lateral\s*head.*triceps\s*brachii/i,
     label: '肱三頭肌外側頭 (Triceps Lateral Head)',
   },
   {
     key: 'triceps_medial_head',
-    regex: /medial\s*head.*triceps/i,
+    regex: /medial\s*head.*triceps\s*brachii/i,
     label: '肱三頭肌內側頭 (Triceps Medial Head)',
   },
   {
     key: 'triceps',
-    regex: /triceps\s*brachii|tricep|anconeus/i,
+    regex: /triceps\s*brachii|anconeus/i,
     label: '肱三頭肌 (Triceps)',
   },
 
@@ -205,7 +220,7 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
   },
   {
     key: 'glutes',
-    regex: /glute|buttock/i,
+    regex: /gluteus/i,
     label: '臀部肌群 (Glutes)',
   },
   {
@@ -225,10 +240,62 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
   },
   {
     key: 'quads',
-    regex: /vastus\s*intermedius|quadriceps|sartorius|quad/i,
-    label: '股四頭肌 (Quads)',
+    regex: /vastus\s*intermedius|quadriceps|sartorius|adductor\s*(longus|brevis|magnus|minimus)|gracilis|pectineus/i,
+    label: '股四頭肌與內收肌群 (Quads & Adductors)',
   },
 ];
+
+/**
+ * 肌群階層與關聯字典
+ * 用於點選/懸停大肌群時連帶高亮所有子肌束，以及點選子肌束時連帶高亮整體節點
+ */
+export const MUSCLE_PARENT_MAP: Record<string, MuscleGroupKey[]> = {
+  chest: ['chest', 'chest_clavicular', 'chest_sternocostal', 'chest_minor'],
+  back: ['back', 'trapezius_upper', 'trapezius_middle_lower', 'lats'],
+  shoulders: ['shoulders', 'deltoid_anterior', 'deltoid_lateral', 'deltoid_posterior'],
+  biceps: ['biceps', 'biceps_long_head', 'biceps_short_head', 'brachialis'],
+  triceps: ['triceps', 'triceps_long_head', 'triceps_lateral_head', 'triceps_medial_head'],
+  abs: [
+    'abs',
+    'rectus_abdominis',
+    'rectus_abdominis_upper',
+    'rectus_abdominis_lower',
+    'external_oblique',
+    'internal_oblique',
+    'transversus_abdominis',
+    'serratus_anterior',
+  ],
+  quads: ['quads', 'quads_rectus_femoris', 'quads_vastus_lateralis', 'quads_vastus_medialis'],
+  glutes: ['glutes', 'glutes_maximus', 'glutes_medius'],
+  hamstrings: ['hamstrings'],
+  calves: ['calves'],
+};
+
+/**
+ * 檢查 Mesh 的肌群 Key 是否與當前激活用戶狀態 (選中/懸停) 匹配
+ */
+export function isMuscleGroupMatched(
+  meshKey: MuscleGroupKey | null,
+  activeKey: MuscleGroupKey | null
+): boolean {
+  if (!meshKey || !activeKey) return false;
+  if (meshKey === activeKey) return true;
+
+  // 1. 若當前激活為大肌群（如 chest），則該大肌群底下的細分子束皆高亮
+  const subKeys = MUSCLE_PARENT_MAP[activeKey];
+  if (subKeys && subKeys.includes(meshKey)) {
+    return true;
+  }
+
+  // 2. 若 Mesh 自身為大肌群整體節點（如 chest），而當前激活為其細分子束（如 chest_clavicular）
+  for (const [parent, children] of Object.entries(MUSCLE_PARENT_MAP)) {
+    if (children.includes(activeKey) && meshKey === parent) {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 /**
  * 依據網格名稱進行模糊解析

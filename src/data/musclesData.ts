@@ -688,8 +688,107 @@ export const MUSCLES_DATA: Record<MuscleGroupKey, MuscleGroupInfo> = {
   },
 
   // ==========================================
-  // 核心肌群細分 (腹直肌 / 腹外斜肌 / 腹內斜肌 / 腹橫肌)
+  // 核心肌群細分 (上腹 / 下腹 / 腹外斜肌 / 腹內斜肌 / 腹橫肌 / 前鋸肌)
   // ==========================================
+  rectus_abdominis_upper: {
+    key: 'rectus_abdominis_upper',
+    name: '上腹直肌 (上腹)',
+    nameEn: 'Upper Rectus Abdominis',
+    latinName: 'Pars Superior Musculi Recti Abdominis',
+    split: 'core',
+    functionSummary: '主要負責由胸骨劍突向骨盆方向捲動胸椎上段（脊柱屈曲）。在常規捲腹、滑輪跪姿捲腹與上斜捲腹中承受最大張力。',
+    originInsertion: '起點：第 5~7 肋軟骨及胸骨劍突。止點：第一及第二腱劃。',
+    cameraFocus: {
+      target: [0, 1.15, 0],
+      position: [0, 1.2, 1.05],
+    },
+    themeColor: '#f59e0b',
+    exercises: [
+      {
+        id: 'ex-cable-kneeling-crunch',
+        name: '滑輪跪姿捲腹',
+        nameEn: 'Cable Kneeling Crunch',
+        type: '孤立動作 (Isolation)',
+        equipment: '滑輪 Cable',
+        difficulty: '入門 Beginner',
+        description: '以繩索負重鎖定上腹肌群，胸口主動朝肚臍方向捲縮，提供高負荷肌肥大刺激。',
+        cues: ['固定髖部不動，低頭將胸口向骨盆內捲，頂峰擠壓上腹 2 秒'],
+        precautions: ['臀部切勿後坐借力'],
+        tags: ['上腹厚度', '可加重負荷', '脊柱捲曲'],
+      },
+    ],
+  },
+
+  rectus_abdominis_lower: {
+    key: 'rectus_abdominis_lower',
+    name: '下腹直肌 (下腹)',
+    nameEn: 'Lower Rectus Abdominis',
+    latinName: 'Pars Inferior Musculi Recti Abdominis',
+    split: 'core',
+    functionSummary: '負責由骨盆向胸部向上捲動（骨盆後傾控制），是克服髂腰肌代償、雕刻肚臍以下下腹平坦與馬甲線下緣的核心原動力。',
+    originInsertion: '起點：第三腱劃以下肌腹。止點：恥骨聯合和恥骨嵴（含錐狀肌）。',
+    cameraFocus: {
+      target: [0, 0.98, 0],
+      position: [0, 1.02, 1.1],
+    },
+    themeColor: '#f97316',
+    exercises: [
+      {
+        id: 'ex-hanging-leg-raise-lower',
+        name: '單槓懸垂舉腿',
+        nameEn: 'Hanging Leg Raise',
+        type: '複合動作 (Compound)',
+        equipment: '自重 Bodyweight',
+        difficulty: '進階 Advanced',
+        description: '懸掛狀態下主動以骨盆後傾捲動帶起雙腿，極限孤立刺激下腹直肌。',
+        cues: ['意念非抬腿，而是將骨盆朝胸部向上捲起，頂部吐盡空氣'],
+        precautions: ['避免身體前後甩動擺盪'],
+        tags: ['下腹殺手', '骨盆後傾掌控', '下側馬甲線'],
+      },
+      {
+        id: 'ex-reverse-crunch',
+        name: '仰臥反向捲腹',
+        nameEn: 'Reverse Crunch',
+        type: '孤立動作 (Isolation)',
+        equipment: '自重 Bodyweight',
+        difficulty: '入門 Beginner',
+        description: '平躺於地，收緊下腹將臀部與尾椎抬離地面，精準消除大腿代償。',
+        cues: ['膝蓋微屈固定，用下腹力量捲起尾椎離地 5~10 公分'],
+        precautions: ['切勿用手掌用力推地借力'],
+        tags: ['下腹新手推薦', '安全無下背痛'],
+      },
+    ],
+  },
+
+  serratus_anterior: {
+    key: 'serratus_anterior',
+    name: '前鋸肌 (鯊魚線)',
+    nameEn: 'Serratus Anterior',
+    latinName: 'Musculus Serratus Anterior',
+    split: 'core',
+    functionSummary: '如指狀緊扣於胸廓外側肋骨，主管肩胛骨前引 (Protraction)、上迴旋與胸壁貼合。是健美中視覺極具攻擊性的「鯊魚線」，同時保護肩關節不夾擠。',
+    originInsertion: '起點：第 1~8 (或 9) 肋骨外側表面。止點：肩胛骨脊柱緣及下角。',
+    cameraFocus: {
+      target: [0.25, 1.25, 0],
+      position: [0.65, 1.3, 0.9],
+    },
+    themeColor: '#06b6d4',
+    exercises: [
+      {
+        id: 'ex-ab-rollout',
+        name: '健腹輪前推 (Ab Rollout)',
+        nameEn: 'Ab Wheel Rollout',
+        type: '複合動作 (Compound)',
+        equipment: '自重 Bodyweight',
+        difficulty: '進階 Advanced',
+        description: '在前伸極限抗伸展過程中，前鋸肌與整段核心需爆發性支撐，打造雕刻般鯊魚線。',
+        cues: ['骨盆維持微後傾，前推時背部微含胸，前鋸肌如爪子般緊抓肋骨穩定'],
+        precautions: ['腰部切勿塌陷下墜'],
+        tags: ['鯊魚線必練', '極致抗伸展', '肩胛前引'],
+      },
+    ],
+  },
+
   rectus_abdominis: {
     key: 'rectus_abdominis',
     name: '腹直肌 (六塊肌)',

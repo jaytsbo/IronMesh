@@ -5,6 +5,7 @@ import { MUSCLES_DATA } from '../data/musclesData';
 interface GymState {
   selectedMuscle: MuscleGroupKey | null;
   hoveredMuscle: MuscleGroupKey | null;
+  hoveredLabel: string | null;
   activeSplit: WorkoutSplit;
   showSkeleton: boolean;
   viewMode: 'standard' | 'xray' | 'wireframe';
@@ -15,6 +16,7 @@ interface GymState {
   // Actions
   selectMuscle: (muscle: MuscleGroupKey | null) => void;
   setHoveredMuscle: (muscle: MuscleGroupKey | null) => void;
+  setHoveredLabel: (label: string | null) => void;
   setActiveSplit: (split: WorkoutSplit) => void;
   toggleSkeleton: () => void;
   setShowSkeleton: (show: boolean) => void;
@@ -29,6 +31,7 @@ interface GymState {
 export const useGymStore = create<GymState>((set) => ({
   selectedMuscle: null,
   hoveredMuscle: null,
+  hoveredLabel: null,
   activeSplit: 'all',
   showSkeleton: true,
   viewMode: 'standard',
@@ -44,6 +47,7 @@ export const useGymStore = create<GymState>((set) => ({
   },
 
   setHoveredMuscle: (muscle) => set({ hoveredMuscle: muscle }),
+  setHoveredLabel: (label) => set({ hoveredLabel: label }),
 
   setActiveSplit: (split) => {
     set((state) => {

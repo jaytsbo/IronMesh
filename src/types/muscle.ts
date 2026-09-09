@@ -4,11 +4,14 @@ export type MuscleGroupKey =
   | 'deltoid_lateral'
   | 'deltoid_posterior'
   | 'shoulders'
-  // 核心細分
+  // 核心細分 (上腹、下腹、外斜肌人魚線、內斜肌、腹橫肌、前鋸肌鯊魚線)
+  | 'rectus_abdominis_upper'
+  | 'rectus_abdominis_lower'
   | 'rectus_abdominis'
   | 'external_oblique'
   | 'internal_oblique'
   | 'transversus_abdominis'
+  | 'serratus_anterior'
   | 'abs'
   // 胸部細分
   | 'chest_clavicular'

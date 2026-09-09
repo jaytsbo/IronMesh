@@ -26,6 +26,7 @@ export const SkeletonLayer: React.FC<SkeletonLayerProps> = ({ visible }) => {
         mesh.material = boneMaterial;
         mesh.castShadow = false;
         mesh.receiveShadow = false;
+        mesh.raycast = () => {};
       }
     });
 

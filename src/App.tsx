@@ -6,11 +6,14 @@ import { MUSCLES_DATA } from './data/musclesData';
 export const App: React.FC = () => {
   const selectedMuscle = useGymStore((state) => state.selectedMuscle);
   const hoveredMuscle = useGymStore((state) => state.hoveredMuscle);
+  const hoveredLabel = useGymStore((state) => state.hoveredLabel);
   const selectMuscle = useGymStore((state) => state.selectMuscle);
   const resetCamera = useGymStore((state) => state.resetCamera);
 
   const activeKey = selectedMuscle || hoveredMuscle;
   const activeInfo = activeKey ? MUSCLES_DATA[activeKey] : null;
+  const displayName = activeInfo ? activeInfo.name : hoveredLabel;
+  const displaySub = activeInfo ? activeInfo.nameEn : (hoveredLabel ? '解剖結構' : null);
 
   // 鍵盤快捷鍵：Escape 取消選取，R 鍵重置視角
   useEffect(() => {
@@ -44,10 +47,10 @@ export const App: React.FC = () => {
               R 重置視角 / ESC 取消
             </span>
           </div>
-          {activeInfo ? (
+          {displayName ? (
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="font-semibold text-base text-rose-400">{activeInfo.name}</span>
-              <span className="text-xs text-slate-400">{activeInfo.nameEn}</span>
+              <span className="font-semibold text-base text-rose-400">{displayName}</span>
+              {displaySub && <span className="text-xs text-slate-400">{displaySub}</span>}
               {selectedMuscle && (
                 <span className="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-1.5 rounded">
                   已選中
@@ -56,7 +59,7 @@ export const App: React.FC = () => {
             </div>
           ) : (
             <div className="mt-1 text-xs text-slate-500 italic">
-              點擊或懸停肌肉部位（已支援三角肌前中後束、腹直肌、腹斜肌等細分）
+              移動滑鼠至任意肌肉即時亮起，點擊可鎖定視角
             </div>
           )}
         </div>
