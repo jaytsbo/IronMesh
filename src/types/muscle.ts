@@ -45,7 +45,10 @@ export type MuscleGroupKey =
   | 'glutes_maximus'
   | 'glutes_medius'
   | 'glutes'
-  | 'calves';
+  | 'tibialis_anterior'
+  | 'gastrocnemius'
+  | 'soleus'
+  | 'fibularis';
 
 export type WorkoutSplit = 'all' | 'push' | 'pull' | 'legs' | 'core';
 

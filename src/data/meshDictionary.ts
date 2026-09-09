@@ -40,9 +40,24 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
     label: '腿後肌群 / 膕繩肌 (Hamstrings)',
   },
   {
-    key: 'calves',
-    regex: /gastrocnemius|soleus|triceps\s*surae|tibialis\s*anterior|tibialis\s*posterior|plantaris|fibularis|peroneus|extensor\s*digitorum\s*longus|flexor\s*digitorum\s*longus|extensor\s*hallucis|flexor\s*hallucis/i,
-    label: '小腿肌群 (Calves)',
+    key: 'tibialis_anterior',
+    regex: /tibialis\s*anterior|extensor\s*digitorum.*(?:longus|brevis)|extensor\s*hallucis|extensor\s*retinaculum.*ankle/i,
+    label: '小腿前側肌群 (脛前肌 / 趾長伸肌)',
+  },
+  {
+    key: 'gastrocnemius',
+    regex: /gastrocnemius/i,
+    label: '腓腸肌 (Gastrocnemius)',
+  },
+  {
+    key: 'soleus',
+    regex: /soleus|calcaneal\s*tendon|achilles/i,
+    label: '比目魚肌 (Soleus)',
+  },
+  {
+    key: 'fibularis',
+    regex: /fibular|perone/i,
+    label: '腓骨肌群 (Fibularis Group)',
   },
 
   // -------------------------
@@ -200,12 +215,12 @@ export const MESH_MATCH_RULES: MeshMatchRule[] = [
   },
   {
     key: 'forearm_flexors',
-    regex: /flexor\s*carpi|flexor\s*digitorum|flexor\s*pollicis|palmaris\s*longus|palmaris/i,
+    regex: /flexor\s*carpi|flexor\s*digitorum(?!\s*(?:longus|brevis))|flexor\s*pollicis|palmaris\s*longus|palmaris/i,
     label: '前臂屈肌群 (Forearm Flexors)',
   },
   {
     key: 'forearm_extensors',
-    regex: /extensor\s*carpi|extensor\s*digitorum|extensor\s*pollicis|extensor\s*indicis|extensor\s*digiti|abductor\s*pollicis\s*longus/i,
+    regex: /extensor\s*carpi|extensor\s*digitorum(?!\s*(?:longus|brevis))|extensor\s*pollicis|extensor\s*indicis|extensor\s*digiti(?!\s*pedis)|abductor\s*pollicis\s*longus/i,
     label: '前臂伸肌群 (Forearm Extensors)',
   },
   {
@@ -295,7 +310,10 @@ export const MUSCLE_PARENT_MAP: Record<string, MuscleGroupKey[]> = {
   adductors: ['adductors'],
   glutes: ['glutes', 'glutes_maximus', 'glutes_medius'],
   hamstrings: ['hamstrings'],
-  calves: ['calves'],
+  tibialis_anterior: ['tibialis_anterior'],
+  gastrocnemius: ['gastrocnemius'],
+  soleus: ['soleus'],
+  fibularis: ['fibularis'],
 };
 
 /**
