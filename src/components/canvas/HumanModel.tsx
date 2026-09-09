@@ -65,16 +65,16 @@ export const HumanModel: React.FC<HumanModelProps> = ({ modelUrl }) => {
         mesh.castShadow = true;
         mesh.receiveShadow = true;
 
-        // 初始狀態：全身體肌肉完全統一的暗紅底色 + 肌肉條紋 Bump 質感
+        // 初始狀態：深沉暗紅底色 + 肌肉條紋 Bump 質感
         mesh.material = new THREE.MeshStandardMaterial({
           map: diffuseMap,
           bumpMap: bumpMap,
           bumpScale: 0.022,
-          color: '#781e1e',
-          emissive: '#140404',
-          emissiveIntensity: 0.04,
-          roughness: 0.44,
-          metalness: 0.08,
+          color: '#360c0c',
+          emissive: '#080101',
+          emissiveIntensity: 0.02,
+          roughness: 0.5,
+          metalness: 0.06,
           transparent: false,
           opacity: 1.0,
         });
@@ -87,7 +87,7 @@ export const HumanModel: React.FC<HumanModelProps> = ({ modelUrl }) => {
     return cloned;
   }, [scene, diffuseMap, bumpMap]);
 
-  // 動態更新材質：未懸停為統一暗紅，滑鼠移到上面該肌肉即時變亮紅
+  // 動態更新材質：未懸停為更暗的深紅，滑鼠移到上面該肌肉即時變為鮮明肌肉紅
   useEffect(() => {
     meshListRef.current.forEach(({ mesh, key }) => {
       const mat = mesh.material as THREE.MeshStandardMaterial;
@@ -105,21 +105,21 @@ export const HumanModel: React.FC<HumanModelProps> = ({ modelUrl }) => {
       const isHighlighted = isHovered || isSelected;
 
       if (isHighlighted) {
-        // 游標移到上面 / 選中：瞬間轉為鮮豔亮紅色 + 立體微發光
-        mat.color.set('#ff2626');
-        mat.emissive.set('#ff1a1a');
-        mat.emissiveIntensity = 0.52;
-        mat.roughness = 0.28;
-        mat.metalness = 0.12;
+        // 游標移到上面 / 選中：呈現鮮明肌肉紅色
+        mat.color.set('#822020');
+        mat.emissive.set('#260606');
+        mat.emissiveIntensity = 0.16;
+        mat.roughness = 0.4;
+        mat.metalness = 0.08;
         mat.transparent = false;
         mat.opacity = 1.0;
       } else {
-        // 預設常態：所有肌肉一致的暗紅色解剖質感
-        mat.color.set('#781e1e');
-        mat.emissive.set('#140404');
-        mat.emissiveIntensity = 0.04;
-        mat.roughness = 0.44;
-        mat.metalness = 0.08;
+        // 預設常態：更暗的暗紅底色
+        mat.color.set('#360c0c');
+        mat.emissive.set('#080101');
+        mat.emissiveIntensity = 0.02;
+        mat.roughness = 0.5;
+        mat.metalness = 0.06;
         mat.transparent = false;
         mat.opacity = 1.0;
       }
